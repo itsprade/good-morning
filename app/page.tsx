@@ -9,6 +9,7 @@ import { syncGoogleTokensFromClerk } from '@/lib/clerk-tokens';
 import { SignOutButton } from '@/components/sign-out-button';
 import { generateDailySummary } from '@/lib/openai';
 import { HomeContent } from '@/components/home-content';
+import { OnboardingWrapper } from '@/components/onboarding-wrapper';
 
 export default async function HomePage() {
   const { userId: clerkUserId } = await auth();
@@ -88,6 +89,9 @@ export default async function HomePage() {
   let greeting = 'Good Morning';
   if (hour >= 12 && hour < 17) greeting = 'Good Afternoon';
   else if (hour >= 17) greeting = 'Good Evening';
+
+  // Check if this is the first time user has Google token and hasn't synced yet
+  const needsInitialSync = !!user.googleAccessToken && !user.lastSyncedAt;
 
   // Get or generate AI daily summary (cached for 24 hours)
   let dailySummary: { bold: string; light: string } | null = null;
@@ -175,6 +179,11 @@ export default async function HomePage() {
         </svg>
       </div>
 
+      <OnboardingWrapper
+        userName={user.name || 'there'}
+        greeting={greeting}
+        needsInitialSync={needsInitialSync}
+      >
       <HomeContent userName={user.name || 'there'} greeting={greeting}>
       <main className="min-h-screen p-6 sm:p-8 relative overflow-x-hidden" style={{ zIndex: 1 }}>
 
@@ -318,6 +327,7 @@ export default async function HomePage() {
         </div>
       </main>
     </HomeContent>
+    </OnboardingWrapper>
     </>
   );
 }

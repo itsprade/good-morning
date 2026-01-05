@@ -17,6 +17,7 @@ model User {
   name                String?
   googleAccessToken   String?
   googleRefreshToken  String?
+  lastSyncedAt        DateTime?
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 
