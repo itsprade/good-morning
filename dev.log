@@ -1,0 +1,505 @@
+
+> goodmorning@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1076ms
+ ✓ Compiled /middleware in 339ms (188 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (181kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ ○ Compiling / ...
+
+
+Source path: /Users/pradeep/Projects/goodmorning/app/globals.css
+Setting up new context...
+Finding changed files: 4.952ms
+Reading changed files: 22.51ms
+Sorting candidates: 0.307ms
+Generate rules: 10.408ms
+Build stylesheet: 0.478ms
+Potential classes:  686
+Active contexts:  1
+JIT TOTAL: 96.689ms
+
+
+ ✓ Compiled / in 1514ms (879 modules)
+
+
+Source path: /Users/pradeep/Projects/goodmorning/app/globals.css
+Finding changed files: 2.698ms
+Reading changed files: 0.003ms
+Sorting candidates: 0.002ms
+Generate rules: 0.054ms
+Build stylesheet: 0.001ms
+Potential classes:  1
+Active contexts:  1
+JIT TOTAL: 6.119ms
+
+
+ ✓ Compiled in 142ms (347 modules)
+ GET / 200 in 2183ms
+ POST / 200 in 10ms
+ POST / 200 in 7ms
+ ○ Compiling /api/calendar/sync ...
+ ✓ Compiled /api/calendar/sync in 2.4s (1549 modules)
+Calendar sync error: GaxiosError: Insufficient Permission
+    at Gaxios._request (webpack-internal:///(rsc)/./node_modules/gaxios/build/src/gaxios.js:142:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async OAuth2Client.requestAsync (webpack-internal:///(rsc)/./node_modules/google-auth-library/build/src/auth/oauth2client.js:429:18)
+    at async syncCalendar (webpack-internal:///(rsc)/./lib/google.ts:41:22)
+    at async POST (webpack-internal:///(rsc)/./app/api/calendar/sync/route.ts:36:23)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  config: {
+    url: 'https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=2026-01-04T18%3A30%3A00.000Z&timeMax=2026-01-05T18%3A30%3A00.000Z&singleEvents=true&orderBy=startTime',
+    method: 'GET',
+    apiVersion: '',
+    userAgentDirectives: [ [Object] ],
+    paramsSerializer: [Function (anonymous)],
+    headers: {
+      'x-goog-api-client': 'gdcl/7.2.0 gl-node/22.14.0',
+      'Accept-Encoding': 'gzip',
+      'User-Agent': 'google-api-nodejs-client/7.2.0 (gzip)',
+      Authorization: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.'
+    },
+    params: {
+      timeMin: '2026-01-04T18:30:00.000Z',
+      timeMax: '2026-01-05T18:30:00.000Z',
+      singleEvents: true,
+      orderBy: 'startTime'
+    },
+    validateStatus: [Function (anonymous)],
+    retry: true,
+    responseType: 'unknown',
+    errorRedactor: [Function: defaultErrorRedactor],
+    retryConfig: {
+      currentRetryAttempt: 0,
+      retry: 3,
+      httpMethodsToRetry: [Array],
+      noResponseRetries: 2,
+      retryDelayMultiplier: 2,
+      timeOfFirstRequest: 1767598982040,
+      totalTimeout: 9007199254740991,
+      maxRetryDelay: 9007199254740991,
+      statusCodesToRetry: [Array]
+    }
+  },
+  response: {
+    config: {
+      url: 'https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=2026-01-04T18%3A30%3A00.000Z&timeMax=2026-01-05T18%3A30%3A00.000Z&singleEvents=true&orderBy=startTime',
+      method: 'GET',
+      apiVersion: '',
+      userAgentDirectives: [Array],
+      paramsSerializer: [Function (anonymous)],
+      headers: [Object],
+      params: [Object],
+      validateStatus: [Function (anonymous)],
+      retry: true,
+      responseType: 'unknown',
+      errorRedactor: [Function: defaultErrorRedactor]
+    },
+    data: { error: [Object] },
+    headers: {
+      'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+      'content-encoding': 'gzip',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Mon, 05 Jan 2026 07:43:01 GMT',
+      server: 'ESF',
+      'transfer-encoding': 'chunked',
+      vary: 'Origin, X-Origin, Referer',
+      'www-authenticate': 'Bearer realm="https://accounts.google.com/", error="insufficient_scope", scope="https://www.googleapis.com/auth/calendar https://www.google.com/calendar/feeds/ https://www.google.com/calendar/feeds http://www.google.com/calendar/feeds/default/allcalendars/full https://www.google.com/calendar/feeds/default/owncalendars/full http://www.google.com/calendar/feeds/ http://www.google.com/calendar/feeds https://www.google.com/calendar/feeds/default/private/full http://www.google.com/calendar/feeds/default/private/full http://www.google.com/calendar/feeds/default/owncalendars/full/ https://www.google.com/calendar/feeds/default https://www.google.com/calendar/freebusy https://www.googleapis.com/auth/calendar.app.created https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.events.freebusy https://www.googleapis.com/auth/calendar.events.owned https://www.googleapis.com/auth/calendar.events.owned.readonly https://www.googleapis.com/auth/calendar.events.public.readonly https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.readonly"',
+      'x-content-type-options': 'nosniff',
+      'x-frame-options': 'SAMEORIGIN',
+      'x-l2-request-path': 'l2-managed-14',
+      'x-xss-protection': '0'
+    },
+    status: 403,
+    statusText: 'Forbidden',
+    request: {
+      responseURL: 'https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=2026-01-04T18%3A30%3A00.000Z&timeMax=2026-01-05T18%3A30%3A00.000Z&singleEvents=true&orderBy=startTime'
+    }
+  },
+  error: undefined,
+  status: 403,
+  code: 403,
+  errors: [
+    {
+      message: 'Insufficient Permission',
+      domain: 'global',
+      reason: 'insufficientPermissions'
+    }
+  ],
+  [Symbol(gaxios-gaxios-error)]: '6.7.1'
+}
+ POST /api/calendar/sync 500 in 3766ms
+ ✓ Compiled /api/gmail/sync in 259ms (1671 modules)
+Gmail fetch error: GaxiosError: Insufficient Permission
+    at Gaxios._request (webpack-internal:///(rsc)/./node_modules/gaxios/build/src/gaxios.js:142:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async OAuth2Client.requestAsync (webpack-internal:///(rsc)/./node_modules/google-auth-library/build/src/auth/oauth2client.js:429:18)
+    at async fetchRecentEmails (webpack-internal:///(rsc)/./lib/gmail.ts:20:26)
+    at async POST (webpack-internal:///(rsc)/./app/api/gmail/sync/route.ts:47:24)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  config: {
+    url: 'https://gmail.googleapis.com/gmail/v1/users/me/messages?q=in%3Ainbox%20after%3A1766994184&maxResults=20',
+    method: 'GET',
+    apiVersion: '',
+    userAgentDirectives: [ [Object] ],
+    paramsSerializer: [Function (anonymous)],
+    headers: {
+      'x-goog-api-client': 'gdcl/7.2.0 gl-node/22.14.0',
+      'Accept-Encoding': 'gzip',
+      'User-Agent': 'google-api-nodejs-client/7.2.0 (gzip)',
+      Authorization: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.'
+    },
+    params: { q: 'in:inbox after:1766994184', maxResults: 20 },
+    validateStatus: [Function (anonymous)],
+    retry: true,
+    responseType: 'unknown',
+    errorRedactor: [Function: defaultErrorRedactor],
+    retryConfig: {
+      currentRetryAttempt: 0,
+      retry: 3,
+      httpMethodsToRetry: [Array],
+      noResponseRetries: 2,
+      retryDelayMultiplier: 2,
+      timeOfFirstRequest: 1767598984756,
+      totalTimeout: 9007199254740991,
+      maxRetryDelay: 9007199254740991,
+      statusCodesToRetry: [Array]
+    }
+  },
+  response: {
+    config: {
+      url: 'https://gmail.googleapis.com/gmail/v1/users/me/messages?q=in%3Ainbox%20after%3A1766994184&maxResults=20',
+      method: 'GET',
+      apiVersion: '',
+      userAgentDirectives: [Array],
+      paramsSerializer: [Function (anonymous)],
+      headers: [Object],
+      params: [Object],
+      validateStatus: [Function (anonymous)],
+      retry: true,
+      responseType: 'unknown',
+      errorRedactor: [Function: defaultErrorRedactor]
+    },
+    data: { error: [Object] },
+    headers: {
+      'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+      'content-encoding': 'gzip',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Mon, 05 Jan 2026 07:43:04 GMT',
+      server: 'ESF',
+      'transfer-encoding': 'chunked',
+      vary: 'Origin, X-Origin, Referer',
+      'www-authenticate': 'Bearer realm="https://accounts.google.com/", error="insufficient_scope", scope="https://mail.google.com/ https://mail.google.com/mail/feed/atom https://mail.google.com https://mail.google.com/mail/feed/atom/ https://mail.google.com/mail https://mail.google.com/mail/ http://mail.google.com/ http://mail.google.com https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.metadata"',
+      'x-content-type-options': 'nosniff',
+      'x-frame-options': 'SAMEORIGIN',
+      'x-xss-protection': '0'
+    },
+    status: 403,
+    statusText: 'Forbidden',
+    request: {
+      responseURL: 'https://gmail.googleapis.com/gmail/v1/users/me/messages?q=in%3Ainbox%20after%3A1766994184&maxResults=20'
+    }
+  },
+  error: undefined,
+  status: 403,
+  code: 403,
+  errors: [
+    {
+      message: 'Insufficient Permission',
+      domain: 'global',
+      reason: 'insufficientPermissions'
+    }
+  ],
+  [Symbol(gaxios-gaxios-error)]: '6.7.1'
+}
+Gmail sync error: Error: Failed to fetch emails from Gmail
+    at fetchRecentEmails (webpack-internal:///(rsc)/./lib/gmail.ts:65:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async POST (webpack-internal:///(rsc)/./app/api/gmail/sync/route.ts:47:24)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/start-server.js:141:13)
+ POST /api/gmail/sync 500 in 814ms
+Gmail fetch error: GaxiosError: Insufficient Permission
+    at Gaxios._request (webpack-internal:///(rsc)/./node_modules/gaxios/build/src/gaxios.js:142:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async OAuth2Client.requestAsync (webpack-internal:///(rsc)/./node_modules/google-auth-library/build/src/auth/oauth2client.js:429:18)
+    at async fetchRecentEmails (webpack-internal:///(rsc)/./lib/gmail.ts:20:26)
+    at async POST (webpack-internal:///(rsc)/./app/api/gmail/sync/route.ts:47:24)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  config: {
+    url: 'https://gmail.googleapis.com/gmail/v1/users/me/messages?q=in%3Ainbox%20after%3A1766994227&maxResults=20',
+    method: 'GET',
+    apiVersion: '',
+    userAgentDirectives: [ [Object] ],
+    paramsSerializer: [Function (anonymous)],
+    headers: {
+      'x-goog-api-client': 'gdcl/7.2.0 gl-node/22.14.0',
+      'Accept-Encoding': 'gzip',
+      'User-Agent': 'google-api-nodejs-client/7.2.0 (gzip)',
+      Authorization: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.'
+    },
+    params: { q: 'in:inbox after:1766994227', maxResults: 20 },
+    validateStatus: [Function (anonymous)],
+    retry: true,
+    responseType: 'unknown',
+    errorRedactor: [Function: defaultErrorRedactor],
+    retryConfig: {
+      currentRetryAttempt: 0,
+      retry: 3,
+      httpMethodsToRetry: [Array],
+      noResponseRetries: 2,
+      retryDelayMultiplier: 2,
+      timeOfFirstRequest: 1767599028023,
+      totalTimeout: 9007199254740991,
+      maxRetryDelay: 9007199254740991,
+      statusCodesToRetry: [Array]
+    }
+  },
+  response: {
+    config: {
+      url: 'https://gmail.googleapis.com/gmail/v1/users/me/messages?q=in%3Ainbox%20after%3A1766994227&maxResults=20',
+      method: 'GET',
+      apiVersion: '',
+      userAgentDirectives: [Array],
+      paramsSerializer: [Function (anonymous)],
+      headers: [Object],
+      params: [Object],
+      validateStatus: [Function (anonymous)],
+      retry: true,
+      responseType: 'unknown',
+      errorRedactor: [Function: defaultErrorRedactor]
+    },
+    data: { error: [Object] },
+    headers: {
+      'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+      'content-encoding': 'gzip',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Mon, 05 Jan 2026 07:43:47 GMT',
+      server: 'ESF',
+      'transfer-encoding': 'chunked',
+      vary: 'Origin, X-Origin, Referer',
+      'www-authenticate': 'Bearer realm="https://accounts.google.com/", error="insufficient_scope", scope="https://mail.google.com/ https://mail.google.com/mail/feed/atom https://mail.google.com https://mail.google.com/mail/feed/atom/ https://mail.google.com/mail https://mail.google.com/mail/ http://mail.google.com/ http://mail.google.com https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.metadata"',
+      'x-content-type-options': 'nosniff',
+      'x-frame-options': 'SAMEORIGIN',
+      'x-xss-protection': '0'
+    },
+    status: 403,
+    statusText: 'Forbidden',
+    request: {
+      responseURL: 'https://gmail.googleapis.com/gmail/v1/users/me/messages?q=in%3Ainbox%20after%3A1766994227&maxResults=20'
+    }
+  },
+  error: undefined,
+  status: 403,
+  code: 403,
+  errors: [
+    {
+      message: 'Insufficient Permission',
+      domain: 'global',
+      reason: 'insufficientPermissions'
+    }
+  ],
+  [Symbol(gaxios-gaxios-error)]: '6.7.1'
+}
+Gmail sync error: Error: Failed to fetch emails from Gmail
+    at fetchRecentEmails (webpack-internal:///(rsc)/./lib/gmail.ts:65:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async POST (webpack-internal:///(rsc)/./app/api/gmail/sync/route.ts:47:24)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/start-server.js:141:13)
+ POST /api/gmail/sync 500 in 323ms
+Calendar sync error: GaxiosError: Insufficient Permission
+    at Gaxios._request (webpack-internal:///(rsc)/./node_modules/gaxios/build/src/gaxios.js:142:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async OAuth2Client.requestAsync (webpack-internal:///(rsc)/./node_modules/google-auth-library/build/src/auth/oauth2client.js:429:18)
+    at async syncCalendar (webpack-internal:///(rsc)/./lib/google.ts:41:22)
+    at async POST (webpack-internal:///(rsc)/./app/api/calendar/sync/route.ts:36:23)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/pradeep/Projects/goodmorning/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  config: {
+    url: 'https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=2026-01-04T18%3A30%3A00.000Z&timeMax=2026-01-05T18%3A30%3A00.000Z&singleEvents=true&orderBy=startTime',
+    method: 'GET',
+    apiVersion: '',
+    userAgentDirectives: [ [Object] ],
+    paramsSerializer: [Function (anonymous)],
+    headers: {
+      'x-goog-api-client': 'gdcl/7.2.0 gl-node/22.14.0',
+      'Accept-Encoding': 'gzip',
+      'User-Agent': 'google-api-nodejs-client/7.2.0 (gzip)',
+      Authorization: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.'
+    },
+    params: {
+      timeMin: '2026-01-04T18:30:00.000Z',
+      timeMax: '2026-01-05T18:30:00.000Z',
+      singleEvents: true,
+      orderBy: 'startTime'
+    },
+    validateStatus: [Function (anonymous)],
+    retry: true,
+    responseType: 'unknown',
+    errorRedactor: [Function: defaultErrorRedactor],
+    retryConfig: {
+      currentRetryAttempt: 0,
+      retry: 3,
+      httpMethodsToRetry: [Array],
+      noResponseRetries: 2,
+      retryDelayMultiplier: 2,
+      timeOfFirstRequest: 1767599055791,
+      totalTimeout: 9007199254740991,
+      maxRetryDelay: 9007199254740991,
+      statusCodesToRetry: [Array]
+    }
+  },
+  response: {
+    config: {
+      url: 'https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=2026-01-04T18%3A30%3A00.000Z&timeMax=2026-01-05T18%3A30%3A00.000Z&singleEvents=true&orderBy=startTime',
+      method: 'GET',
+      apiVersion: '',
+      userAgentDirectives: [Array],
+      paramsSerializer: [Function (anonymous)],
+      headers: [Object],
+      params: [Object],
+      validateStatus: [Function (anonymous)],
+      retry: true,
+      responseType: 'unknown',
+      errorRedactor: [Function: defaultErrorRedactor]
+    },
+    data: { error: [Object] },
+    headers: {
+      'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+      'content-encoding': 'gzip',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Mon, 05 Jan 2026 07:44:15 GMT',
+      server: 'ESF',
+      'transfer-encoding': 'chunked',
+      vary: 'Origin, X-Origin, Referer',
+      'www-authenticate': 'Bearer realm="https://accounts.google.com/", error="insufficient_scope", scope="https://www.googleapis.com/auth/calendar https://www.google.com/calendar/feeds/ https://www.google.com/calendar/feeds http://www.google.com/calendar/feeds/default/allcalendars/full https://www.google.com/calendar/feeds/default/owncalendars/full http://www.google.com/calendar/feeds/ http://www.google.com/calendar/feeds https://www.google.com/calendar/feeds/default/private/full http://www.google.com/calendar/feeds/default/private/full http://www.google.com/calendar/feeds/default/owncalendars/full/ https://www.google.com/calendar/feeds/default https://www.google.com/calendar/freebusy https://www.googleapis.com/auth/calendar.app.created https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.events.freebusy https://www.googleapis.com/auth/calendar.events.owned https://www.googleapis.com/auth/calendar.events.owned.readonly https://www.googleapis.com/auth/calendar.events.public.readonly https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.readonly"',
+      'x-content-type-options': 'nosniff',
+      'x-frame-options': 'SAMEORIGIN',
+      'x-l2-request-path': 'l2-managed-14',
+      'x-xss-protection': '0'
+    },
+    status: 403,
+    statusText: 'Forbidden',
+    request: {
+      responseURL: 'https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=2026-01-04T18%3A30%3A00.000Z&timeMax=2026-01-05T18%3A30%3A00.000Z&singleEvents=true&orderBy=startTime'
+    }
+  },
+  error: undefined,
+  status: 403,
+  code: 403,
+  errors: [
+    {
+      message: 'Insufficient Permission',
+      domain: 'global',
+      reason: 'insufficientPermissions'
+    }
+  ],
+  [Symbol(gaxios-gaxios-error)]: '6.7.1'
+}
+ POST /api/calendar/sync 500 in 707ms
+[?25h

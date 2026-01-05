@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String   @id @default(uuid())
+  clerkId             String   @unique
+  email               String   @unique
+  name                String?
+  googleAccessToken   String?
+  googleRefreshToken  String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  events              Event[]
+  tasks               Task[]
+  emailActions        EmailAction[]
+  dailySummaries      DailySummary[]
+}
+
+model Event {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title           String
+  startTime       DateTime
+  endTime         DateTime
+  meetingLink     String?
+  googleEventId   String
+
+  createdAt       DateTime @default(now())
+
+  @@index([userId, startTime])
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title       String
+  description String?
+  completed   Boolean  @default(false)
+  source      String   @default("manual") // "manual" | "gmail" | "linear"
+  sourceId    String?  // Email ID or Linear issue ID
+  priority    String?  // "high" | "medium" | "low"
+  dueDate     DateTime?
+
+  completedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId, completed])
+}
+
+model EmailAction {
+  id                    String   @id @default(uuid())
+  userId                String
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  emailId               String   // Gmail message ID
+  subject               String
+  sender                String
+  receivedAt            DateTime
+
+  suggestedTaskTitle    String
+  suggestedDescription  String?
+  suggestedPriority     String?  // "high" | "medium" | "low"
+  suggestedDueDate      DateTime?
+
+  status                String   @default("suggested") // "suggested" | "converted" | "dismissed"
+  convertedToTaskId     String?
+
+  createdAt             DateTime @default(now())
+
+  @@index([userId, status])
+}
+
+model DailySummary {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  date            DateTime @db.Date
+  boldPart        String   @db.Text
+  lightPart       String   @db.Text
+
+  // Context used for generation
+  meetingsCount   Int
+  emailActionsCount Int
+  tasksCount      Int
+
+  createdAt       DateTime @default(now())
+
+  @@unique([userId, date])
+  @@index([userId, date])
+}
