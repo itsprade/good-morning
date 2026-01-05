@@ -33,9 +33,12 @@ export async function POST() {
       );
     }
 
-    const results = {
-      calendar: { status: 'pending' as const, error: null as string | null },
-      gmail: { status: 'pending' as const, error: null as string | null, newSuggestions: 0 },
+    const results: {
+      calendar: { status: string; error: string | null };
+      gmail: { status: string; error: string | null; newSuggestions: number };
+    } = {
+      calendar: { status: 'pending', error: null },
+      gmail: { status: 'pending', error: null, newSuggestions: 0 },
     };
 
     // Sync Calendar
