@@ -12,35 +12,37 @@ interface OnboardingWrapperProps {
 
 export function OnboardingWrapper({ userName, greeting, needsInitialSync, children }: OnboardingWrapperProps) {
   const [showOnboarding, setShowOnboarding] = useState(needsInitialSync);
-  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncComplete, setSyncComplete] = useState(false);
 
   useEffect(() => {
-    if (needsInitialSync && !isSyncing) {
-      setIsSyncing(true);
+    if (needsInitialSync && !syncComplete) {
       // Trigger initial sync
       fetch('/api/initial-sync', { method: 'POST' })
         .then((res) => res.json())
         .then((data) => {
           console.log('Initial sync completed:', data);
+          setSyncComplete(true);
+          // Wait a moment then hide onboarding and reload
+          setTimeout(() => {
+            setShowOnboarding(false);
+            window.location.reload();
+          }, 2000);
         })
         .catch((error) => {
           console.error('Initial sync failed:', error);
+          // Still hide onboarding even if sync fails
+          setTimeout(() => {
+            setShowOnboarding(false);
+          }, 3000);
         });
     }
-  }, [needsInitialSync, isSyncing]);
-
-  const handleOnboardingComplete = () => {
-    setShowOnboarding(false);
-    // Refresh the page to load the synced data
-    window.location.reload();
-  };
+  }, [needsInitialSync, syncComplete]);
 
   if (showOnboarding) {
     return (
       <OnboardingLoader
         userName={userName}
         greeting={greeting}
-        onComplete={handleOnboardingComplete}
       />
     );
   }

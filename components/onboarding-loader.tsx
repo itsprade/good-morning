@@ -5,55 +5,29 @@ import { useEffect, useState } from 'react';
 interface OnboardingLoaderProps {
   userName: string;
   greeting: string;
-  onComplete: () => void;
 }
 
-type SyncStage = 'greeting' | 'calendar' | 'gmail' | 'complete';
+const STATUS_MESSAGES = [
+  'Going through your Google Calendar...',
+  'Analyzing your upcoming meetings...',
+  'Going through your Gmail...',
+  'Finding actionable emails...',
+  'Creating task suggestions...',
+  'Generating your daily summary...',
+  'Setting up your dashboard...',
+  'Almost ready...',
+];
 
-const STAGE_MESSAGES = {
-  greeting: '',
-  calendar: 'Going through your Google Calendar...',
-  gmail: 'Going through your Gmail...',
-  complete: 'Setting up your dashboard...',
-};
-
-export function OnboardingLoader({ userName, greeting, onComplete }: OnboardingLoaderProps) {
-  const [stage, setStage] = useState<SyncStage>('greeting');
+export function OnboardingLoader({ userName, greeting }: OnboardingLoaderProps) {
+  const [messageIndex, setMessageIndex] = useState(0);
 
   useEffect(() => {
-    // Start sync process after greeting
-    const startSyncTimer = setTimeout(() => {
-      setStage('calendar');
-    }, 1000);
+    const interval = setInterval(() => {
+      setMessageIndex((prev) => (prev + 1) % STATUS_MESSAGES.length);
+    }, 2000);
 
-    return () => clearTimeout(startSyncTimer);
+    return () => clearInterval(interval);
   }, []);
-
-  // Update stage based on sync status
-  useEffect(() => {
-    if (stage === 'calendar') {
-      const calendarTimer = setTimeout(() => {
-        setStage('gmail');
-      }, 3000);
-      return () => clearTimeout(calendarTimer);
-    }
-
-    if (stage === 'gmail') {
-      const gmailTimer = setTimeout(() => {
-        setStage('complete');
-      }, 3000);
-      return () => clearTimeout(gmailTimer);
-    }
-
-    if (stage === 'complete') {
-      const completeTimer = setTimeout(() => {
-        onComplete();
-      }, 1000);
-      return () => clearTimeout(completeTimer);
-    }
-  }, [stage, onComplete]);
-
-  const currentMessage = STAGE_MESSAGES[stage];
 
   return (
     <div className="fixed inset-0 z-50 bg-white">
@@ -89,8 +63,8 @@ export function OnboardingLoader({ userName, greeting, onComplete }: OnboardingL
         </svg>
       </div>
 
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
+      {/* Good Morning Text - Centered */}
+      <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-5xl sm:text-6xl font-bold text-gray-900">
             {greeting}
@@ -98,20 +72,18 @@ export function OnboardingLoader({ userName, greeting, onComplete }: OnboardingL
           <p className="text-2xl sm:text-3xl text-gray-500 mt-3">
             {userName}
           </p>
-
-          {/* Loading message */}
-          {currentMessage && (
-            <div className="mt-12 flex flex-col items-center gap-4">
-              {/* Loading spinner */}
-              <div className="w-8 h-8 border-3 border-gray-300 border-t-orange-500 rounded-full animate-spin"></div>
-
-              {/* Status message */}
-              <p className="text-lg text-gray-600 animate-pulse">
-                {currentMessage}
-              </p>
-            </div>
-          )}
         </div>
+      </div>
+
+      {/* Loading Status - Bottom Center */}
+      <div className="absolute bottom-24 left-0 right-0 flex flex-col items-center gap-4">
+        {/* Loading spinner */}
+        <div className="w-8 h-8 border-3 border-gray-300 border-t-orange-500 rounded-full animate-spin"></div>
+
+        {/* Cycling status message */}
+        <p className="text-lg text-gray-600 transition-opacity duration-300">
+          {STATUS_MESSAGES[messageIndex]}
+        </p>
       </div>
     </div>
   );
