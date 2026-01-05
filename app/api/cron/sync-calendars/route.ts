@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { syncCalendar } from '@/lib/google';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const maxDuration = 300; // 5 minutes
 
 export async function GET(request: Request) {

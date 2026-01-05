@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { fetchRecentEmails } from '@/lib/gmail';
 import { parseEmailsForTasks } from '@/lib/openai';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const maxDuration = 300; // 5 minutes
 
 export async function GET(request: Request) {

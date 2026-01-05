@@ -175,7 +175,7 @@ export default async function HomePage() {
         </svg>
       </div>
 
-      <HomeContent userName={user.name} greeting={greeting}>
+      <HomeContent userName={user.name || 'there'} greeting={greeting}>
       <main className="min-h-screen p-6 sm:p-8 relative overflow-x-hidden" style={{ zIndex: 1 }}>
 
         <div className="max-w-3xl mx-auto relative z-10">
@@ -188,7 +188,7 @@ export default async function HomePage() {
         {/* Greeting and Summary Section */}
         <div className="pt-[100px]">
           <h1 className="text-sm text-gm-text-secondary font-normal mb-2">
-            {greeting}, {user.name}
+            {greeting}, {user.name || 'there'}
           </h1>
 
           {/* AI Daily Summary - Always Visible */}

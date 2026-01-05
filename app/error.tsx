@@ -19,7 +19,7 @@ export default function Error({
         <div className="text-6xl mb-4">😔</div>
         <h1 className="text-2xl font-bold text-gray-900 mb-2">Something went wrong</h1>
         <p className="text-gray-600 mb-6">
-          We encountered an unexpected error. Don't worry, your data is safe.
+          We encountered an unexpected error. Don&apos;t worry, your data is safe.
         </p>
         <div className="space-y-3">
           <button
