@@ -1,11 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/cron/sync-calendars",
-      "schedule": "*/15 * * * *"
-    },
-    {
-      "path": "/api/cron/sync-gmail",
+      "path": "/api/cron/daily-sync",
       "schedule": "0 6 * * *"
     }
   ]
