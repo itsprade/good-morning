@@ -85,6 +85,16 @@ export async function POST() {
       newCount++;
     }
 
+    // Invalidate today's cached summary so it regenerates with new email data
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    await prisma.dailySummary.deleteMany({
+      where: {
+        userId: user.id,
+        date: today,
+      },
+    });
+
     return NextResponse.json({
       success: true,
       count: newCount,

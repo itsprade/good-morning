@@ -107,47 +107,64 @@ export async function generateDailySummary({
   meetingsCount,
   meetings,
   emailActionsCount,
+  emailSubjects,
   topTasks,
 }: {
   meetingsCount: number;
   meetings: Array<{ title: string; startTime: Date }>;
   emailActionsCount: number;
+  emailSubjects: string[];
   topTasks: Array<{ title: string }>;
 }): Promise<{ bold: string; light: string }> {
   const meetingsList = meetings
-    .slice(0, 5)
+    .slice(0, 3)
     .map(
       (m) =>
         `${m.startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} - ${m.title}`
     )
     .join('\n');
 
-  const tasksList = topTasks.slice(0, 5).map((t) => t.title).join('\n');
+  const tasksList = topTasks.slice(0, 3).map((t) => t.title).join('\n');
+  const emailsList = emailSubjects.slice(0, 3).join('\n');
 
-  const prompt = `You are a calm, encouraging daily companion. Generate a two-part morning summary:
+  const prompt = `You are a calm, encouraging daily companion. Generate a concise two-part morning summary that's specific and relevant to today's actual events.
 
-PART 1 (bold, direct): 1-2 sentences assessing today's shape (meetings, tasks, workload)
-PART 2 (light, philosophical): 1-2 sentences giving gentle direction and encouragement
+CONSTRAINTS (CRITICAL):
+- TOTAL LENGTH: Maximum 260 characters for BOTH parts combined
+- EMOJIS: Use exactly 1-2 relevant emojis total (not per part, TOTAL)
+- DISPLAY: Must fit in 5 lines or less when displayed
+- BE SPECIFIC: Reference actual meeting times, titles, or email subjects when possible
+
+PART 1 (bold, factual): Short assessment of today (what's happening)
+PART 2 (light, encouraging): Brief direction or encouragement
 
 Context:
 - Meetings today: ${meetingsCount}
 ${meetingsList ? `Meeting details:\n${meetingsList}` : 'No meetings scheduled'}
-- New action items from inbox: ${emailActionsCount}
-${tasksList ? `- Top tasks:\n${tasksList}` : '- No tasks yet'}
+- New email actions: ${emailActionsCount}
+${emailsList ? `Email subjects:\n${emailsList}` : 'Inbox clear'}
+${tasksList ? `Top tasks:\n${tasksList}` : 'No active tasks'}
 
-Tone: Warm, human, encouraging. Like a wise friend checking in. No jargon. No mention of "system" or "app".
+Examples (NOTE: these respect 260 char limit):
+{
+  "boldPart": "📅 3 meetings today starting at 9am, plus 2 urgent emails to handle.",
+  "lightPart": "Tackle the emails first, then flow through the meetings. You've got this."
+}
 
-Examples:
-"Your day looks a bit tight today, I have cleaned up some tasks and planned some items to execute. Wake up knowing what matters, move through your day with ease, and close it with a sense of completion."
+{
+  "boldPart": "Light day ahead—just one call at 2pm and your inbox is clear ✨",
+  "lightPart": "Perfect day for deep work. Pick your most important task and dive in."
+}
 
-"Just two meetings today and your inbox is clear. This is a good day to make real progress on what matters most. Pick one thing and give it your full attention."
-
-"Today is packed—six meetings back to back starting at 9am. Protect 30 minutes this morning for your top priority, then let the meetings flow. You'll get through it."
+{
+  "boldPart": "Packed schedule: 6 back-to-back meetings from 9am-4pm 🗓️",
+  "lightPart": "Block 30 mins this morning for prep. Let the rest flow naturally."
+}
 
 Format as JSON:
 {
-  "boldPart": "Your day looks...",
-  "lightPart": "Wake up knowing..."
+  "boldPart": "...",
+  "lightPart": "..."
 }`;
 
   try {

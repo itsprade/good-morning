@@ -115,6 +115,7 @@ export default async function HomePage() {
         meetingsCount: events.length,
         meetings: events.map((e) => ({ title: e.title, startTime: e.startTime })),
         emailActionsCount: emailActions.length,
+        emailSubjects: emailActions.map((e) => e.suggestedTaskTitle),
         topTasks: activeTasks.slice(0, 5).map((t) => ({ title: t.title })),
       });
 

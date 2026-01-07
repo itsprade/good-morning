@@ -21,6 +21,17 @@ export async function POST() {
     }
 
     const count = await syncCalendar(user.id);
+
+    // Invalidate today's cached summary so it regenerates with new calendar data
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    await prisma.dailySummary.deleteMany({
+      where: {
+        userId: user.id,
+        date: today,
+      },
+    });
+
     return NextResponse.json({ success: true, count });
   } catch (error) {
     console.error('Calendar sync error:', error);
