@@ -21,10 +21,10 @@ export function HomeContent({ userName, greeting, children }: HomeContentProps) 
 
   const handleLoaderComplete = () => {
     setShowLoader(false);
-    // Trigger content animation after loader completes
-    setTimeout(() => {
+    // Trigger content animation immediately
+    requestAnimationFrame(() => {
       setAnimateContent(true);
-    }, 50);
+    });
   };
 
   return (
@@ -37,12 +37,12 @@ export function HomeContent({ userName, greeting, children }: HomeContentProps) 
         />
       )}
       <div
-        className={`transition-all duration-700 ease-out ${
+        className={`transition-all duration-500 ease-out will-change-transform ${
           showLoader
-            ? 'opacity-0 translate-y-[400px]'
+            ? 'opacity-0 translate-y-[200px]'
             : animateContent
             ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-[400px]'
+            : 'opacity-0 translate-y-[200px]'
         }`}
       >
         {children}
